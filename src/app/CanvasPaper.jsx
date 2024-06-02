@@ -25,7 +25,7 @@ export default function CanvasPaper() {
         for (let i = 0; i < 500; i++) {
           const x = Math.random();
           const y = Math.random();
-          const alpha = Math.random();
+          const alpha = Math.random() * 0.8;
           const speed = alpha * 0.0002 + 0.0002;
           let start = new paper.Point(x * window.innerWidth, y * window.innerHeight);
           let size = new paper.Size(1, 1);
@@ -52,7 +52,7 @@ export default function CanvasPaper() {
             }
 
             const dist = Math.sqrt(Math.pow(x - mouseX, 2) + Math.pow(y - mouseY, 2));
-            if (dist < 200) {
+            if (dist < 200 * sprite.alpha) {
               const from = new paper.Point(sprite.shape.position.x, sprite.shape.position.y);
               const to = new paper.Point(mouseX, mouseY);
               const path = new paper.Path.Line(from, to);
