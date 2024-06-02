@@ -33,7 +33,7 @@ export default function CanvasPaper() {
           shape.style = { 
             fillColor: new paper.Color(alpha),                                               
           };
-          sprites.add({ shape, speed, alpha, x, y });
+          sprites.add({ shape, speed, alpha, x, y, linked: 0 });
         }
 
         let lines = [];
@@ -53,11 +53,20 @@ export default function CanvasPaper() {
 
             const dist = Math.sqrt(Math.pow(x - mouseX, 2) + Math.pow(y - mouseY, 2));
             if (dist < 200 * sprite.alpha) {
+              if (sprite.linked < 1) {
+                sprite.linked += sprite.speed * 100;
+              } else {
+                sprite.linked = 1;
+              }
               const from = new paper.Point(sprite.shape.position.x, sprite.shape.position.y);
-              const to = new paper.Point(mouseX, mouseY);
+              const toX = (mouseX - sprite.shape.position.x) * sprite.linked + sprite.shape.position.x;
+              const toY = (mouseY - sprite.shape.position.y) * sprite.linked + sprite.shape.position.y;
+              const to = new paper.Point(toX, toY);
               const path = new paper.Path.Line(from, to);
               path.strokeColor = new paper.Color(sprite.alpha);
               lines.push(path);
+            } else {
+              sprite.linked = 0;
             }
           });
         }, 20);
