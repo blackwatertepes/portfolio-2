@@ -3,7 +3,7 @@ import CanvasPaper from "./CanvasPaper";
 
 export default function Home() {
   const links = [
-    { name: 'Githubs', href: 'https://github.com/blackwatertepes' },
+    { name: 'Github', href: 'https://github.com/blackwatertepes' },
     { name: 'LinkedIn', href: 'https://linkedin.com/in/tylerkuhn' },
     { name: 'StackExchange', href: 'https://stackexchange.com/users/1728484/tyler-j-kuhn' },
     { name: 'Medium', href: 'https://medium.com/@tylerjkuhn' },
