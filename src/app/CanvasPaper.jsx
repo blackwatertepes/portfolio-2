@@ -42,7 +42,7 @@ export default function CanvasPaper() {
           lines = [];
 
           sprites.forEach(sprite => {                                                        
-            sprite.x += sprite.speed;                                         
+            sprite.x += sprite.speed * 2;                                         
             const x = sprite.x * window.innerWidth;
             const y = sprite.y * window.innerHeight;
             sprite.shape.position.x = x;
@@ -60,7 +60,7 @@ export default function CanvasPaper() {
               lines.push(path);
             }
           });
-        }, 10);                                                                              
+        }, 20);
 
         window.addEventListener("mousemove", (e) => {
           mouseX = e.x;
