@@ -1,5 +1,8 @@
+'use client';
+
 import Image from "next/image";
 import CanvasPaper from "./CanvasPaper";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const links = [
@@ -10,6 +13,40 @@ export default function Home() {
     { name: 'Project Euler', href: 'https://projecteuler.net/progress=blackwatertepes' },
     { name: 'StackExchange', href: 'https://stackexchange.com/users/1728484/tyler-j-kuhn' },
   ];
+
+  const random = (arr: any[]) => {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  const iams = [
+    "tech startup veteran",
+    "full-stack developer",
+    "UX/product engineer",
+  ];
+
+  const hobbies = [
+    "electric skateboard",
+    "Victory motorcycle",
+  ];
+
+  const minYears = 10;
+  const maxYears = 18;
+
+  const randomIam = () => random(iams);
+  const randomHobby = () => random(hobbies);
+  const randomYear = () => Math.floor(Math.random() * (maxYears - minYears)) + minYears;
+
+  const [iam, setIam] = useState(randomIam());
+  const [years, setYears] = useState(minYears);
+  const [hobby, setHobby] = useState(randomHobby());
+
+  useEffect(() => {
+    setInterval(() => {
+      if (Math.random() > 0.95) setIam(randomIam());
+      if (Math.random() > 0.90) setHobby(randomHobby());
+      if (Math.random() > 0.50) setYears(randomYear());
+    }, 200);
+  }, []);
 
   return (
     <>
@@ -39,12 +76,12 @@ export default function Home() {
         <div className="max-w-sm text-slate-500">
           <h3 className="text-2xl">Tyler J. Kuhn</h3>
           <p>
-            I&apos;m a tech startup veteran, with more than 15 years of industry experience.
+            I&apos;m a <span style={{ display: 'inline-block', width: '165px' }}>{iam}</span>, with more than {years} years of industry experience.
             I&apos;ve worn multiple hats, starting in Flash/ActionScript 2.0,
             and eventually transitioning into Full-Stack web development.
-            I&apos;ve dabbled in a variety of web technologies,
-            including Ruby/Rails, NodeJS, PostgresQL, React, Docker, Heroku, & various bits of AWS.
-            When I&apos;m not programming, you can usually find me riding my electric skateboard around San Francisco.
+            I&apos;ve worked in a variety of web technologies,
+            including Ruby on Rails, NodeJS, PostgresQL, React, Docker, Heroku, & various bits of AWS.
+            When I&apos;m not programming, you can usually find me riding my <span style={{ display: 'inline-block', width: '150px' }}>{hobby}</span> around San Francisco.
           </p>
         </div>
 
