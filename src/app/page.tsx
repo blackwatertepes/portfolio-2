@@ -35,12 +35,14 @@ export default function Home() {
 
       <div className="max-w-sm text-slate-500">
         <h3 className="text-2xl">Tyler J. Kuhn</h3>
-        <p>I'm a tech startup veteran, with more than 15 years of industry experience.
-          I've worn multiple hats, starting in Flash/ActionScript 2.0,
+        <p>
+          I&apos;m a tech startup veteran, with more than 15 years of industry experience.
+          I&apos;ve worn multiple hats, starting in Flash/ActionScript 2.0,
           and eventually transitioning into Full-Stack web development.
-          I've dabbled in a variety of web technologies,
+          I&apos;ve dabbled in a variety of web technologies,
           including Ruby/Rails, NodeJS, PostgresQL, React, Docker, Heroku, & various bits of AWS.
-          When I'm not programming, you can usually find me riding my electric skateboard around San Francisco.</p>
+          When I&apos;m not programming, you can usually find me riding my electric skateboard around San Francisco.
+        </p>
       </div>
 
       <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:grid-cols-6 lg:text-left">
@@ -48,6 +50,7 @@ export default function Home() {
           <a
             href={link.href}
             className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+            key={link.name}
             target="_blank"
             rel="noopener noreferrer"
           >
