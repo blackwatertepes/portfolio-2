@@ -20,6 +20,8 @@ export default function CanvasPaper() {
         paper.setup(canvas);
 
         const sprites = new Set();
+        let mouseX = -1000;
+        let mouseY = -1000;
         for (let i = 0; i < 500; i++) {
           const x = Math.random();
           const y = Math.random();
@@ -31,19 +33,39 @@ export default function CanvasPaper() {
           shape.style = { 
             fillColor: new paper.Color(alpha),                                               
           };
-          sprites.add({ shape, speed, x, y });
+          sprites.add({ shape, speed, alpha, x, y });
         }
 
+        let lines = [];
         setInterval(() => {                                                                  
+          lines.forEach(line => line.remove());
+          lines = [];
+
           sprites.forEach(sprite => {                                                        
             sprite.x += sprite.speed;                                         
-            sprite.shape.position.x = sprite.x * window.innerWidth;
-            sprite.shape.position.y = sprite.y * window.innerHeight;
+            const x = sprite.x * window.innerWidth;
+            const y = sprite.y * window.innerHeight;
+            sprite.shape.position.x = x;
+            sprite.shape.position.y = y;
             if (sprite.x > 1) {
               sprite.x = 0;
             }
+
+            const dist = Math.sqrt(Math.pow(x - mouseX, 2) + Math.pow(y - mouseY, 2));
+            if (dist < 200) {
+              const from = new paper.Point(sprite.shape.position.x, sprite.shape.position.y);
+              const to = new paper.Point(mouseX, mouseY);
+              const path = new paper.Path.Line(from, to);
+              path.strokeColor = new paper.Color(sprite.alpha);
+              lines.push(path);
+            }
           });
         }, 10);                                                                              
+
+        window.addEventListener("mousemove", (e) => {
+          mouseX = e.x;
+          mouseY = e.y;
+        });
       }} />
       <canvas id="canvasPaper" width={5000} height={5000} className="fixed -z-50"></canvas>                           
     </>
