@@ -4,11 +4,11 @@ import CanvasPaper from "./CanvasPaper";
 export default function Home() {
   const links = [
     { name: 'Github', href: 'https://github.com/blackwatertepes' },
-    { name: 'LinkedIn', href: 'https://linkedin.com/in/tylerkuhn' },
-    { name: 'StackExchange', href: 'https://stackexchange.com/users/1728484/tyler-j-kuhn' },
     { name: 'Medium', href: 'https://medium.com/@tylerjkuhn' },
+    { name: 'LinkedIn', href: 'https://linkedin.com/in/tylerkuhn' },
     { name: 'Leetcode', href: 'https://leetcode.com/u/blackwater' },
     { name: 'Project Euler', href: 'https://projecteuler.net/progress=blackwatertepes' },
+    { name: 'StackExchange', href: 'https://stackexchange.com/users/1728484/tyler-j-kuhn' },
   ];
 
   return (
