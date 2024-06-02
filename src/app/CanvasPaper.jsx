@@ -23,12 +23,13 @@ export default function CanvasPaper() {
         for (let i = 0; i < 500; i++) {
           const x = Math.random();
           const y = Math.random();
-          const speed = Math.random() * 0.0002 + 0.0002;
+          const alpha = Math.random();
+          const speed = alpha * 0.0002 + 0.0002;
           let start = new paper.Point(x * window.innerWidth, y * window.innerHeight);
           let size = new paper.Size(1, 1);
           let shape = new paper.Shape.Rectangle(start, size);                                
           shape.style = { 
-            fillColor: new paper.Color('black'),                                               
+            fillColor: new paper.Color(alpha),                                               
           };
           sprites.add({ shape, speed, x, y });
         }
